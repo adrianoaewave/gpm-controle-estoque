@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ControleEstoque.UI.Web.Controllers
 {
+    [Authorize]
     public class ProductController : BaseController
     {
         private readonly IProductAppService _productAppService;

@@ -1,0 +1,32 @@
+﻿@model ControleEstoque.Application.ViewModels.ItemProductViewModel
+@{
+    ViewData["Title"] = "Item Product Management";
+}
+<h2>@ViewData["Title"]</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdItem)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IdItem)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IdProduct)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IdProduct)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemProductQuantity)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ItemProductQuantity)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-idItem="@Model.IdItem" asp-route-idProduct="@Model.IdProduct" class="btn btn-warning">Edit</a>
+    <a asp-action="Index" class="btn btn-info">Back to List</a>
+</div>

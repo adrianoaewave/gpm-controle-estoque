@@ -30,7 +30,7 @@ namespace ControleEstoque.Services.Api.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        [Route("item-management/{id:id}")]
+        [Route("item-management/{id:int}")]
         public IActionResult Get(int id)
         {
             var itemViewModel = _itemAppService.GetById(id);
@@ -71,7 +71,7 @@ namespace ControleEstoque.Services.Api.Controllers
         }
 
         [HttpDelete]
-        [Authorize(Policy = "CanRemoveItemData")]
+        //[Authorize(Policy = "CanRemoveItemData")]
         [Route("item-management")]
         public IActionResult Delete(int id)
         {

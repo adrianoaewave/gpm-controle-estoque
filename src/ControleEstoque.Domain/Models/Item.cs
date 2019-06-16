@@ -1,4 +1,5 @@
 ﻿using ControleEstoque.Domain.Core.Models;
+using System.Collections.Generic;
 
 namespace ControleEstoque.Domain.Models
 {
@@ -17,5 +18,6 @@ namespace ControleEstoque.Domain.Models
         public string Name { get; set; }
         public int QuantidadeEstoque { get; set; }
         public string ERPCode { get; set; }
+        public virtual ICollection<ItemProduct> ItemProducts { get; set; }
     }
 }

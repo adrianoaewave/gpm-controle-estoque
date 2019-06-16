@@ -67,6 +67,10 @@ namespace ControleEstoque.UI.Web
                 options.AddPolicy("CanRemoveCustomerData", policy => policy.Requirements.Add(new ClaimRequirement("Customers", "Remove")));
                 options.AddPolicy("CanWriteProductData", policy => policy.Requirements.Add(new ClaimRequirement("Product", "Write")));
                 options.AddPolicy("CanRemoveProductData", policy => policy.Requirements.Add(new ClaimRequirement("Product", "Remove")));
+                options.AddPolicy("CanWriteItemData", policy => policy.Requirements.Add(new ClaimRequirement("Item", "Write")));
+                options.AddPolicy("CanRemoveItemData", policy => policy.Requirements.Add(new ClaimRequirement("Item", "Remove")));
+                options.AddPolicy("CanWriteItemProductData", policy => policy.Requirements.Add(new ClaimRequirement("ItemProduct", "Write")));
+                options.AddPolicy("CanRemoveItemProductData", policy => policy.Requirements.Add(new ClaimRequirement("ItemProduct", "Remove")));
             });
 
             // Adding MediatR for Domain Events and Notifications

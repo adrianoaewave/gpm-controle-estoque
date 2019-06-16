@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ControleEstoque.UI.Web.Controllers
 {
+    [Authorize]
     public class ItemController : BaseController
     {
         private readonly IItemAppService _itemAppService;
@@ -27,7 +28,7 @@ namespace ControleEstoque.UI.Web.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        [Route("item-management/item-details/{id:id}")]
+        [Route("item-management/item-details/{id:int}")]
         public IActionResult Details(int? id)
         {
             if (id == null)
@@ -70,7 +71,7 @@ namespace ControleEstoque.UI.Web.Controllers
 
         [HttpGet]
         //Authorize(Policy = "CanWriteItemData")]
-        [Route("item-management/edit-item/{id:id}")]
+        [Route("item-management/edit-item/{id:int}")]
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -90,7 +91,7 @@ namespace ControleEstoque.UI.Web.Controllers
 
         [HttpPost]
         //[Authorize(Policy = "CanWriteItemData")]
-        [Route("item-management/edit-item/{id:guid}")]
+        [Route("item-management/edit-item/{id:int}")]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(ItemViewModel itemViewModel)
         {
@@ -106,7 +107,7 @@ namespace ControleEstoque.UI.Web.Controllers
 
         [HttpGet]
         //[Authorize(Policy = "CanRemoveItemData")]
-        [Route("item-management/remove-item/{id:id}")]
+        [Route("item-management/remove-item/{id:int}")]
         public IActionResult Delete(int? id)
         {
             if (id == null)

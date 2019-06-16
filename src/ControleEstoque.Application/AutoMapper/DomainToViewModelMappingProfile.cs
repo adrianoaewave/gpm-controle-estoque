@@ -10,6 +10,7 @@ namespace ControleEstoque.Application.AutoMapper
         {
             CreateMap<Customer, CustomerViewModel>();
             CreateMap<Item, ItemViewModel>();
+            CreateMap<ItemProduct, ItemProductViewModel>();
             CreateMap<Product, ProductViewModel>();
         }
     }
