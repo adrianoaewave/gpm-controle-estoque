@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AssemblyName>ControleEstoque.Infra.CrossCutting.IoC</AssemblyName>
+    <PackageId>Equinox.Infra.CrossCutting.IoC</PackageId>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ControleEstoque.Application\ControleEstoque.Application.csproj" />
+    <ProjectReference Include="..\ControleEstoque.Domain\ControleEstoque.Domain.csproj" />
+    <ProjectReference Include="..\ControleEstoque.Infra.CrossCutting.Identity\ControleEstoque.Infra.CrossCutting.Identity.csproj" />
+    <ProjectReference Include="..\ControleEstoque.Infra.Data\ControleEstoque.Infra.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0" />
+  </ItemGroup>
+
+</Project>
