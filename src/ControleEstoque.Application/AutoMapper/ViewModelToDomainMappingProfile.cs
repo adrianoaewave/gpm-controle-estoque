@@ -3,6 +3,7 @@ using ControleEstoque.Application.ViewModels;
 using ControleEstoque.Domain.Commands.Customers;
 using ControleEstoque.Domain.Commands.ItemProducts;
 using ControleEstoque.Domain.Commands.Items;
+using ControleEstoque.Domain.Commands.Orders;
 using ControleEstoque.Domain.Commands.Products;
 
 namespace ControleEstoque.Application.AutoMapper
@@ -25,6 +26,13 @@ namespace ControleEstoque.Application.AutoMapper
                 .ConstructUsing(c => new RegisterNewItemProductCommand(c.IdItem, c.IdProduct, c.ItemProductQuantity));
             CreateMap<ItemProductViewModel, UpdateItemProductCommand>()
                 .ConstructUsing(c => new UpdateItemProductCommand(c.IdItem, c.IdProduct, c.ItemProductQuantity));
+
+            CreateMap<OrderViewModel, RegisterNewOrderCommand>()
+                .ConstructUsing(c => new RegisterNewOrderCommand(c.OrderDate, c.DeliveryDays, c.IdCustomer, c.DeliveryDescription, 
+                                                                 c.Observation, c.ERPCode));
+            CreateMap<OrderViewModel, UpdateOrderCommand>()
+                .ConstructUsing(c => new UpdateOrderCommand(c.Id, c.OrderDate, c.DeliveryDays, c.IdCustomer, c.DeliveryDescription,
+                                                            c.Observation, c.ERPCode));
 
             CreateMap<ProductViewModel, RegisterNewProductCommand>()
                 .ConstructUsing(c => new RegisterNewProductCommand(c.Name, c.ERPCode));

@@ -4,17 +4,25 @@ using ControleEstoque.Domain.Core.Notifications;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Linq;
 
 namespace ControleEstoque.UI.Web.Controllers
 {
     public class ItemProductController : BaseController
     {
         private readonly IItemProductAppService _itemProductAppService;
+        private readonly IProductAppService _productAppService;
+        private readonly IItemAppService _itemAppService;
 
         public ItemProductController(IItemProductAppService itemProductAppService,
+                                     IProductAppService productAppService,
+                                     IItemAppService itemAppService,
                                      INotificationHandler<DomainNotification> notifications) : base(notifications)
         {
+            _itemAppService = itemAppService;
             _itemProductAppService = itemProductAppService;
+            _productAppService = productAppService;
         }
 
         [HttpGet]
@@ -50,6 +58,8 @@ namespace ControleEstoque.UI.Web.Controllers
         [Route("item-product-management/register-new")]
         public IActionResult Create()
         {
+            ViewBag.Product = _productAppService.GetAll().AsEnumerable().Select(li => new SelectListItem {Text = li.Name, Value = li.Id.ToString() });
+            ViewBag.Item = _itemAppService.GetAll().AsEnumerable().Select(li => new SelectListItem { Text = li.Name, Value = li.Id.ToString() });
             return View();
         }
 

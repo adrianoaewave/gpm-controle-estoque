@@ -18,6 +18,7 @@ namespace ControleEstoque.Infra.Data.Context
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<ItemProduct> ItemProducts { get; set; }
+        public DbSet<Order> Orders { get; set; }
         public DbSet<Product> Products { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -25,6 +26,7 @@ namespace ControleEstoque.Infra.Data.Context
             modelBuilder.ApplyConfiguration(new CustomerMap());
             modelBuilder.ApplyConfiguration(new ItemMap());
             modelBuilder.ApplyConfiguration(new ItemProductMap());
+            modelBuilder.ApplyConfiguration(new OrderMap());
             modelBuilder.ApplyConfiguration(new ProductMap());
                         
             base.OnModelCreating(modelBuilder);

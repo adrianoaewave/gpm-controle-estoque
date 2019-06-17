@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using ControleEstoque.Domain.Core.Models;
 
 namespace ControleEstoque.Domain.Models
@@ -15,5 +16,6 @@ namespace ControleEstoque.Domain.Models
         protected Customer() { }
 
         public string Name { get; private set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using ControleEstoque.Domain.CommandHandlers;
 using ControleEstoque.Domain.Commands.Customers;
 using ControleEstoque.Domain.Commands.ItemProducts;
 using ControleEstoque.Domain.Commands.Items;
+using ControleEstoque.Domain.Commands.Orders;
 using ControleEstoque.Domain.Commands.Products;
 using ControleEstoque.Domain.Core.Bus;
 using ControleEstoque.Domain.Core.Events;
@@ -12,6 +13,7 @@ using ControleEstoque.Domain.EventHandlers;
 using ControleEstoque.Domain.Events.Customers;
 using ControleEstoque.Domain.Events.ItemProducts;
 using ControleEstoque.Domain.Events.Items;
+using ControleEstoque.Domain.Events.Orders;
 using ControleEstoque.Domain.Events.Products;
 using ControleEstoque.Domain.Interfaces;
 using ControleEstoque.Infra.CrossCutting.Bus;
@@ -47,6 +49,7 @@ namespace ControleEstoque.Infra.CrossCutting.IoC
             services.AddScoped<ICustomerAppService, CustomerAppService>();
             services.AddScoped<IItemAppService, ItemAppService>();
             services.AddScoped<IItemProductAppService, ItemProductAppService>();
+            services.AddScoped<IOrderAppService, OrderAppService>();
             services.AddScoped<IProductAppService, ProductAppService>();
 
             // Domain - Events
@@ -62,6 +65,10 @@ namespace ControleEstoque.Infra.CrossCutting.IoC
             services.AddScoped<INotificationHandler<ItemProductRegisteredEvent>, ItemProductEventHandler>();
             services.AddScoped<INotificationHandler<ItemProductUpdatedEvent>, ItemProductEventHandler>();
             services.AddScoped<INotificationHandler<ItemProductRemovedEvent>, ItemProductEventHandler>();
+
+            services.AddScoped<INotificationHandler<OrderRegisteredEvent>, OrderEventHandler>();
+            services.AddScoped<INotificationHandler<OrderUpdatedEvent>, OrderEventHandler>();
+            services.AddScoped<INotificationHandler<OrderRemovedEvent>, OrderEventHandler>();
 
             services.AddScoped<INotificationHandler<ProductRegisteredEvent>, ProductEventHandler>();
             services.AddScoped<INotificationHandler<ProductUpdatedEvent>, ProductEventHandler>();
@@ -80,6 +87,10 @@ namespace ControleEstoque.Infra.CrossCutting.IoC
             services.AddScoped<IRequestHandler<UpdateItemProductCommand, bool>, ItemProductCommandHandler>();
             services.AddScoped<IRequestHandler<RemoveItemProductCommand, bool>, ItemProductCommandHandler>();
 
+            services.AddScoped<IRequestHandler<RegisterNewOrderCommand, bool>, OrderCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateOrderCommand, bool>, OrderCommandHandler>();
+            services.AddScoped<IRequestHandler<RemoveOrderCommand, bool>, OrderCommandHandler>();
+
             services.AddScoped<IRequestHandler<RegisterNewProductCommand, bool>, ProductCommandHandler>();
             services.AddScoped<IRequestHandler<UpdateProductCommand, bool>, ProductCommandHandler>();
             services.AddScoped<IRequestHandler<RemoveProductCommand, bool>, ProductCommandHandler>();
@@ -88,6 +99,7 @@ namespace ControleEstoque.Infra.CrossCutting.IoC
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IItemRepository, ItemRepository>();
             services.AddScoped<IItemProductRepository, ItemProductRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ControleEstoqueContext>();
